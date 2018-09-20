@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Lab 2</title>
+
+    	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+    	integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    	crossorigin=""/>
+
+    	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+    	integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+    	crossorigin=""></script>
+
+	</head>
+
+	<body>
+    	<div id="map" style="height: 500px"></div>
+
+    	<script type="text/javascript">
+
+      	var map = L.map('map', {
+          	center: [39.3163481,-98.2789403],
+          	zoom: 5.21,
+      	});
+
+      	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+           	attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+           	maxZoom: 11,
+           	minZoom: 1,
+        	}).addTo(map);
+
+        	var treeIcon = L.icon({
+	iconUrl: 'trees.png', // url that links to the icon image file
+	iconSize: 	[38, 38], // size of the icon image in pixels
+	iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+	popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+
+        	var marker1 = L.marker([36.0600362,-112.1878649], {icon: treeIcon}).addTo(map);
+        	var marker2 = L.marker([44.9066038,-110.4036759], {icon: treeIcon}).addTo(map);
+        	var marker3 = L.marker([37.2818148,-113.0793509], {icon: treeIcon}).addTo(map);
+
+        	var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Grandcanyon_view5.jpg/1280px-Grandcanyon_view5.jpg"  width="250">';
+        	var pic2 = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Calcite_Springs_in_Yellowstone.JPG/1920px-Calcite_Springs_in_Yellowstone.JPG"  width="250">';
+        	var pic3 = '<img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Zion_angels_landing_view.jpg" width="250">';
+
+        	marker1.bindPopup('<p style="color:blue; font-weight:bold"> Grand Canyon </p>' + pic1);
+        	marker2.bindPopup('<p style="color:seagreen; font-weight:bold"> Calcite Springs </p>' + pic2);
+        	marker3.bindPopup('<p style="color:seagreen; font-weight:bold"> Zion </p>' + pic3);
+    	</script>
